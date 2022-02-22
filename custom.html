@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="module"
+    src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js">
+    </script>
+    <script nomodule
+    src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js">
+    </script>
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Drink</title>
+</head>
+<ion-app>
+    
+        
+        
+    
+    <ion-content style="--ion-background-color:#35353D">
+        
+        <ion-row>   
+            <ion-card style="width:40px;background-color: #62626D;">
+                <ion-img src="images/arrow.png" style="width:30px"></ion-img>
+            </ion-card>
+        
+            <ion-input placeholder="~Edit Name~" style="position:relative;left:40px;top:10px;font-size:30px;color:white"></ion-input>
+        </ion-row> 
+
+        <ion-row >
+            <ion-col size="4.5">
+                <ion-textArea id="ing-display" rows="" cols="10" style="background-color: #62626D;border-radius:10px;padding-left:10px;position:relative;top:50px;height:50%;color:white"> <p>@spirit <br><br>@measure<br><br>@mixer<br><br>@ice</p>
+                
+                
+                
+                
+               
+                </ion-textArea>
+            </ion-col>
+            <ion-col>
+                <ion-img id="drink-img" src="images/empty.png" style="width:350px;position:absolute;float:right;right:-60px"></ion-img>
+            </ion-col>
+            
+        </ion-row>
+
+        <ion-card style="background-color:#62626D;padding:10px">
+           
+                    <ion-select placeholder="Select Spirit..." id="select-spirit" style="color:white; font-size: 20px;">
+                        <ion-select-option>Gin</ion-select-option>
+                    </ion-select>
+                
+        </ion-card>
+
+
+    <ion-row>
+        <ion-col size="6">
+            <ion-item >
+                <ion-card style="background-color:#62626D;padding:15px">
+        
+                        <ion-label style="color:white">25ml</ion-label>
+                </ion-card>
+                        <ion-radio id="25ml-bttn" color="success" style="position:relative;right:40px" slot="end" value="25"></ion-radio>
+            </ion-item>
+        </ion-col>
+        <ion-col size="6">
+            <ion-item>
+            <ion-card style="background-color:#62626D;padding:15px">
+        
+                <ion-label style="color:white">50ml</ion-label>
+        </ion-card>
+                <ion-radio id="50ml-bttn" color="success" style="position:relative;right:40px" slot="end" value="50"></ion-radio>
+                
+            </ion-item>
+        </ion-col>
+    </ion-row>
+    
+    <ion-card style="background-color:#62626D;padding:10px">
+           
+        <ion-select placeholder="Second Spirit..." id="select-spirit-2" style="color:white; font-size: 20px;">
+            <ion-select-option>Gin</ion-select-option>
+        </ion-select>
+    
+    </ion-card>
+
+
+    <ion-row>
+        <ion-col size="6">
+            <ion-item >
+                <ion-card style="background-color:#62626D;padding:15px">
+
+                    <ion-label style="color:white">25ml</ion-label>
+                </ion-card>
+                <ion-radio id="25ml-bttn-2" color="success" style="position:relative;right:40px" slot="end" value="25"></ion-radio>
+            </ion-item>
+        </ion-col>
+        <ion-col size="6">
+            <ion-item>
+                <ion-card style="background-color:#62626D;padding:15px">
+
+                    <ion-label style="color:white">50ml</ion-label>
+                </ion-card>
+                <ion-radio id="50ml-bttn-2" color="success" style="position:relative;right:40px" slot="end" value="50"></ion-radio>
+    
+            </ion-item>
+        </ion-col>
+    </ion-row>
+
+
+
+        <ion-card style="background-color:#62626D;padding:10px">
+           
+            <ion-select placeholder="Select Mixer..." id="select-mixer" style="color:white; font-size: 20px;">
+                <ion-select-option>Coca Cola</ion-select-option>
+            </ion-select>
+        
+        </ion-card>
+
+        <ion-card style="background-color:#62626D;padding:10px">
+           
+            <ion-select placeholder="Second Mixer..." id="select-mixer-2" style="color:white; font-size: 20px;">
+                <ion-select-option>Coca Cola</ion-select-option>
+            </ion-select>
+        
+        </ion-card>
+
+        <ion-card style="background-color:#62626D;padding:10px">
+           
+            <ion-select placeholder="Select Ice..." id="select-ice" style="color:white; font-size: 20px;">
+                <ion-select-option>Crushed</ion-select-option>
+            </ion-select>
+        
+        </ion-card>
+    </ion-content>
