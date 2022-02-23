@@ -12,6 +12,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Drink</title>
+
+    <style>
+        ion-list{
+            position:relative;
+            top:50px;
+        }
+        ion-item{
+            color:white;
+            --border-color:white;
+
+        }
+    </style>
 </head>
 <ion-app>
     
@@ -22,9 +34,9 @@
         
         <ion-row style="height:75px">
             <ion-col size="3">
-            <ion-tab-button id="back-home">
-                <ion-icon name="arrow-back-outline" size="large" color="success" style="padding-top:10px;font-size:60px"></ion-icon>
-            </ion-tab-button>
+                <ion-tab-button id="back-home">
+                    <ion-icon name="arrow-back-outline" size="large" color="success" style="padding-top:10px;font-size:60px"></ion-icon>
+                </ion-tab-button>
         
                  <!--This will be used after implementing naviagtion with JS
 
@@ -38,14 +50,20 @@
 
         <ion-row >
             <ion-col size="4.5">
-                <ion-card style="position:relative;top:60px">
-                    <ion-card-content style="color:white;background-color: #62626D">
-                        <p>@spirit <br><br>@measure<br><br>@mixer<br><br>@ice</p>
-                    </ion-card-content>
-                </ion-card>
+                <ion-list>
+                    <ion-item>
+                        <p>@spirit</p>
+                    </ion-item>
+                    <ion-item>
+                        <p>@mixer</p>
+                    </ion-item>
+                    <ion-item>
+                        <p>@ice</p>
+                    </ion-item>
+                </ion-list>
             </ion-col>
             <ion-col size="4">
-                <ion-img id="drink-img" src="images/empty.png" style="width:340px;position:relative;right:40px;top:20px"></ion-img>
+                <ion-img id="drink-img" src="images/empty.png" style="width:340px;position:relative;right:40px"></ion-img>
             </ion-col>
             
         </ion-row>

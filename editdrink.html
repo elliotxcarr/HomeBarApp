@@ -12,6 +12,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Drink</title>
+
+    <style>
+        ion-list{
+            position:relative;
+            top:50px;
+            
+        }
+        ion-item{
+            color:white;
+            --border-color:white
+        }
+    </style>
 </head>
 <ion-app>
     
@@ -38,12 +50,17 @@
 
         <ion-row >
             <ion-col size="4.5">
-                <ion-card style="position:relative;top:60px">
-                    <ion-card-content style="color:white;background-color: #62626D">
-                        <p>@spirit <br><br>@measure<br><br>@mixer<br><br>@ice</p>
-                              
-                    </ion-card-content>
-                </ion-card>
+                <ion-list >
+                    <ion-item>
+                        <p>@spirit</p>
+                    </ion-item>
+                    <ion-item>
+                        <p>@mixer</p>
+                    </ion-item>
+                    <ion-item>
+                        <p>@ice</p>
+                    </ion-item>
+                </ion-list>
             </ion-col>
             <ion-col>
                 <ion-img id="drink-img" src="images/rumncoke.png"></ion-img>
