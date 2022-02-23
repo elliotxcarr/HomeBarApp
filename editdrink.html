@@ -16,28 +16,34 @@
 <ion-app>
     
         
-        
     
     <ion-content style="--ion-background-color:#35353D">
 
-        <ion-row>   
-            <ion-card style="width:40px;background-color: #62626D;">
-                <ion-img src="images/arrow.png" style="width:30px"></ion-img>
-            </ion-card>
+        <ion-row style="height:75px">
+            <ion-col size="3">
+            <ion-tab-button id="back-home">
+                <ion-icon name="arrow-back-outline" size="large" color="success" style="padding-top:10px;font-size:60px"></ion-icon>
+            </ion-tab-button>
         
+                 <!--This will be used after implementing naviagtion with JS
+
+                        <ion-buttons>
+                        <ion-back-button defaultHref="\"></ion-back-button>
+                    </ion-buttons>-->
+                    
+            </ion-col>
             <ion-label  style="position:relative;left:40px;top:20px;font-size:30px;color:white">Vodka Coke</ion-label>
         </ion-row> 
         
 
         <ion-row >
             <ion-col size="4.5">
-                <ion-textArea id="ing-display" rows="" cols="10" style="background-color: #62626D;border-radius:10px;padding-left:10px;position:relative;top:50px;height:50%;color:white"> <p>@spirit <br><br>@measure<br><br>@mixer<br><br>@ice</p>
-                
-                
-                
-                
-               
-                </ion-textArea>
+                <ion-card style="position:relative;top:60px">
+                    <ion-card-content style="color:white;background-color: #62626D">
+                        <p>@spirit <br><br>@measure<br><br>@mixer<br><br>@ice</p>
+                              
+                    </ion-card-content>
+                </ion-card>
             </ion-col>
             <ion-col>
                 <ion-img id="drink-img" src="images/rumncoke.png"></ion-img>

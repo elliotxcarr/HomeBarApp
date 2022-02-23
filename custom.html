@@ -20,26 +20,32 @@
     
     <ion-content style="--ion-background-color:#35353D">
         
-        <ion-row>   
-            <ion-card style="width:40px;background-color: #62626D;">
-                <ion-img src="images/arrow.png" style="width:30px"></ion-img>
-            </ion-card>
+        <ion-row style="height:75px">
+            <ion-col size="3">
+            <ion-tab-button id="back-home">
+                <ion-icon name="arrow-back-outline" size="large" color="success" style="padding-top:10px;font-size:60px"></ion-icon>
+            </ion-tab-button>
         
+                 <!--This will be used after implementing naviagtion with JS
+
+                        <ion-buttons>
+                        <ion-back-button defaultHref="\"></ion-back-button>
+                    </ion-buttons>-->
+                    
+            </ion-col>
             <ion-input placeholder="~Edit Name~" style="position:relative;left:40px;top:10px;font-size:30px;color:white"></ion-input>
         </ion-row> 
 
         <ion-row >
             <ion-col size="4.5">
-                <ion-textArea id="ing-display" rows="" cols="10" style="background-color: #62626D;border-radius:10px;padding-left:10px;position:relative;top:50px;height:50%;color:white"> <p>@spirit <br><br>@measure<br><br>@mixer<br><br>@ice</p>
-                
-                
-                
-                
-               
-                </ion-textArea>
+                <ion-card style="position:relative;top:60px">
+                    <ion-card-content style="color:white;background-color: #62626D">
+                        <p>@spirit <br><br>@measure<br><br>@mixer<br><br>@ice</p>
+                    </ion-card-content>
+                </ion-card>
             </ion-col>
-            <ion-col>
-                <ion-img id="drink-img" src="images/empty.png" style="width:350px;position:absolute;float:right;right:-60px"></ion-img>
+            <ion-col size="4">
+                <ion-img id="drink-img" src="images/empty.png" style="width:340px;position:relative;right:40px;top:20px"></ion-img>
             </ion-col>
             
         </ion-row>
@@ -47,6 +53,8 @@
         <ion-card style="background-color:#62626D;padding:10px">
            
                     <ion-select placeholder="Select Spirit..." id="select-spirit" style="color:white; font-size: 20px;">
+
+                        <!--This is where the app will refer to the API to collect the list of spirits -->
                         <ion-select-option>Gin</ion-select-option>
                     </ion-select>
                 
@@ -111,6 +119,7 @@
         <ion-card style="background-color:#62626D;padding:10px">
            
             <ion-select placeholder="Select Mixer..." id="select-mixer" style="color:white; font-size: 20px;">
+                <!--This is where the app will refer to the API to collect the list of mixers -->
                 <ion-select-option>Coca Cola</ion-select-option>
             </ion-select>
         
