@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Results</title>
 
-    <!-- <style>
+    <style>
         ion-item{
             color:white;
             --border-color:rgb(196, 196, 196);
@@ -24,19 +24,23 @@
 
 <body>
     <ion-app>
-        <nav>
-        <ion-header position="static" style="background-color: #62626D; height:80px">
+        <ion-nav>
+        
+        <ion-header position="static" style="background-color: #62626D; height:80px;padding-top:15px">
             
-            <ion-row>
+            <ion-row >
                 <ion-col size="2">
                     <ion-tab-button id="back-home" href="./home.html">
                         <ion-icon name="arrow-back-outline" color="success" style="font-size:40px"></ion-icon>
                     </ion-tab-button>
                 </ion-col>
-                <ion-col size="9">
-                    <ion-searchbar></ion-searchbar>
-                </ion-col>
+                <ion-col size="7">
+                    <ion-input style="background-color:white" id="searchBar"></ion-input>
                     
+                </ion-col>
+                <ion-col>
+                    <ion-button color="success" id="search">Go</ion-button>
+                </ion-col>    
                     
                
             </ion-row>
@@ -44,25 +48,14 @@
         </ion-header>
         <ion-content style="--ion-background-color:#35353D">
 
-            <ion-list display="block">
-                <ion-item>
-                    
-
-                </ion-item>
-                <ion-item>
-                    
-                </ion-item>
-                <ion-item>
-                    
-                </ion-item>
-                <ion-item>
-                    
-                </ion-item>
-                <ion-item>
-                    
-                </ion-item>
+            <ion-list display="block" id="nameResults">
+                
             </ion-list>
         
         </ion-content>
-    </nav>
-    </ion-app> -->
+    </ion-nav>
+    </ion-app>
+    
+    </body>
+    <script src="app.js"></script>
+</html>

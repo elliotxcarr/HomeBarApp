@@ -14,27 +14,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Bar</title>
-    
+    <style>
+        ion-modal {
+        --width: 290px;
+        --height: 382px;
+        --border-radius: 8px;
+      }
+      .lower{
+        top:35%;
+
+      }
+    </style>
+    <script type="module">
+      import { alertController } from 'https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/index.esm.js';
+      window.alertController = alertController;
+    </script>
 </head>
 <body >
+  <ion-nav>
     <ion-app >
         <ion-content style="--ion-background-color:#35353D">
         
-            <ion-img id="logo" src= "images/logo.png" style="position:absolute;top:25%;left:20%; width:280px" ></ion-img>
+            <ion-img id="logo" src= "images/logo.png" style="display:block;margin-left: auto;margin-right: auto;margin-top:auto;width:250px;position:relative;top:30%" ></ion-img>
             
-            <ion-item style="top:50%;">
-                <ion-label id="inputDate" style="color:white; padding-left: 100px;">Enter Your Date Of Birth</ion-label>
-            </ion-item>
-                <ion-popover trigger="inputDate" display="cover">
-                    <ion-datetime presentation="date" [(ngModel)]="date"></ion-datetime>
-                </ion-popover>
-                <!--This input may be switched to a picker upon implementing Javascript-->
-                
-            
-            <ion-button color="success" size="100%" style="position:absolute;top:65%;left:38%" href="./home.html">Submit</ion-button>
-                
-            
+            <ion-item class="lower">
+                <ion-label id="inputDate" style="color:white; text-align:center" >Enter Your Date Of Birth</ion-label>
+              </ion-item>
+            <ion-modal trigger="inputDate">
+                <ion-content force-overscroll="false">
+                  <ion-datetime presentation="date" displayFormat="YYYY-MM-DD"[(ngModel)]="date" id="date-time"></ion-datetime>
+                </ion-content>
+              </ion-modal>
+            <ion-item class="lower">
+              
+            <ion-button  color="success" size="100%" style="display:block;margin-left: auto;margin-right: auto;width:100px" id="verify">Submit</ion-button>
+          </ion-item>
+          <ion-alert-controller></ion-alert-controller>
     </ion-content>
     </ion-app>
+  </ion-nav>
 </body>
+<script src="app.js"></script>
 </html>

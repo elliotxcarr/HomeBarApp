@@ -23,17 +23,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+
+    
 </head>
 
 
-<body id="body" style="opacity:1;">
+<body id="body" style="opacity:1;background-color: black;">
     <ion-app >
-        <ion-nav>
+        
         <ion-header position="static" style="background-color: #62626D; height:80px">
             
             <ion-row>
                 <ion-col size="3.5">
-                    <ion-tab-button id="search-bttn">
+                    <ion-tab-button id="search-bttn" href="./searchresults.html">
                         <ion-icon name="search-outline" color="success" size="large" ></ion-icon>
                     </ion-tab-button>
                 </ion-col>
@@ -52,7 +54,16 @@
             
         </ion-header>
         <ion-content style="--ion-background-color:#35353D">
-            
+            <ion-card >
+                <ion-img id="cocktail-img" src="images/cocktails.jpg" style="padding-bottom:15px"></ion-img>
+                <ion-label >Cocktails</ion-label>
+                <ion-button color="success" id="cocktail-bttn" style="float:right" size="small" href="./cocktails.html">See All</ion-button> 
+            </ion-card>
+            <ion-card >
+                <ion-img id="create-img" src="images/bartender.jpg" style="padding-bottom:15px"></ion-img>
+                <ion-label  >Create!</ion-label>
+                <ion-button color="success" id="nonalc-bttn" style="float:right" size="small" href="./custom.html" >See All</ion-button> 
+            </ion-card>
             <ion-card >
                 <ion-img id="beer-img" src="images/beer.jpg" style="padding-bottom:15px"></ion-img>
                 <ion-label  >Beers</ion-label>
@@ -63,27 +74,14 @@
                 <ion-label  >Wines</ion-label>
                 <ion-button color="success" id="wine-bttn" style="float:right" size="small" href="./wines.html">See All</ion-button> 
             </ion-card>
-            <ion-card >
-                <ion-img id="cocktail-img" src="images/cocktails.jpg" style="padding-bottom:15px"></ion-img>
-                <ion-label >Cocktails</ion-label>
-                <ion-button color="success" id="cocktail-bttn" style="float:right" size="small" href="./cocktails.html">See All</ion-button> 
-            </ion-card>
-            <ion-card >
-                <ion-img id="nonalc-img" src="images/nonalc.png" style="padding-bottom:15px"></ion-img>
-                <ion-label  >Non-Alcoholic</ion-label>
-                <ion-button color="success" id="nonalc-bttn" style="float:right" size="small">See All</ion-button> 
-            </ion-card>
             
-            <ion-card >
-                <ion-img id="create-img" src="images/bartender.jpg" style="padding-bottom:15px"></ion-img>
-                <ion-label  >Create!</ion-label>
-                <ion-button color="success" id="nonalc-bttn" style="float:right" size="small" href="./custom.html">See All</ion-button> 
-            </ion-card>
+                       
+            
         </ion-content>
-    </ion-nav>
+        
     </ion-app>
     
 </body>
-<script src="app.js"></script>
 
+    <script src="app.js"></script>
 </html>

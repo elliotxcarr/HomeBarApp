@@ -12,9 +12,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cocktails</title>
+    <style>
+        ion-card{
+            padding:8px;
+            background-color:#62626D
+        }
+        
+    </style>
 </head>
+<body style="background-color:black">
 <ion-app>
     <ion-nav>
+        
     <ion-header position="static" style="background-color: #62626D; height:70px">
         <ion-row>
             <ion-col size="3.5">
@@ -33,46 +42,61 @@
         </ion-row>
         
     </ion-header>
+    
     <ion-content style="--ion-background-color:#35353D">
         <ion-row>
             <ion-col size="6">
-                <ion-card style="padding:10px;background-color:#62626D">
-                    <ion-img onclick= "showDetail()" src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview"></ion-img> 
+                <ion-card >
+                    <ion-img onclick= "showDetail('manhattan')" value="manhattan" src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview"></ion-img> 
                 </ion-card>
             </ion-col>
             <ion-col size="6">
-                <ion-card style="padding:10px;background-color:#62626D">
-                    <ion-img src="https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg/preview" ></ion-img> 
+                <ion-card >
+                    <ion-img onclick= "showDetail('mojito')" value="mojito" src="https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg/preview" ></ion-img> 
                 </ion-card>
             </ion-col>
         </ion-row>  <!--testing out accessing images from the API site-->
         <ion-row>
             <ion-col size="6">
-                <ion-card style="padding:10px;background-color:#62626D">
-                    <ion-img src="images/martini.jpg"></ion-img> 
+                <ion-card >
+                    <ion-img onclick= "showDetail('negroni')" value="negroni" src="https://www.thecocktaildb.com/images/media/drink/qgdu971561574065.jpg"></ion-img> 
                 </ion-card>
             </ion-col>
             <ion-col size="6">
-                <ion-card style="padding:10px;background-color:#62626D">
-                    <ion-img src="images/old.jpg"></ion-img> 
+                <ion-card >
+                    <ion-img onclick= "showDetail('daiquiri')" value="daiquiri" src="https://www.thecocktaildb.com/images/media/drink/mrz9091589574515.jpg"></ion-img> 
                 </ion-card>
             </ion-col>
         </ion-row>
         <ion-row>
             <ion-col size="6">
-                <ion-card style="padding:10px;background-color:#62626D">
-                    <ion-img src="images/pina.jpg"></ion-img> 
+                <ion-card>
+                    <ion-img onclick= "showDetail('colada')" value="colada" src="https://www.thecocktaildb.com/images/media/drink/cpf4j51504371346.jpg"></ion-img> 
                 </ion-card>
             </ion-col>
             <ion-col size="6">
-                <ion-card style="padding:10px;background-color:#62626D">
-                    <ion-img src="images/tec.jpg"></ion-img> 
+                <ion-card>
+                    <ion-img onclick= "showDetail('martini')" value="martini" src="https://www.thecocktaildb.com/images/media/drink/6ck9yi1589574317.jpg"></ion-img> 
                 </ion-card>
             </ion-col>
         </ion-row>
+        <ion-row>
+            <ion-col size="6">
+                <ion-card>
+                    <ion-img onclick= "showDetail('cosmopolitan')" value="cosmopolitan" src="https://www.thecocktaildb.com/images/media/drink/kpsajh1504368362.jpg"></ion-img> 
+                </ion-card>
+            </ion-col>
+            <ion-col size="6">
+                <ion-card>
+                    <ion-img onclick= "showDetail('zombie')" value="zombie" src="https://www.thecocktaildb.com/images/media/drink/2en3jk1509557725.jpg"></ion-img> 
+                </ion-card>
+            </ion-col>
+        </ion-row><br><br><br><br>
         
     
     </ion-content>
-</ion-nav>
-</ion-app>
+    </ion-nav>
+    </ion-app>
+</body>
 <script src="app.js"></script>
+</html>

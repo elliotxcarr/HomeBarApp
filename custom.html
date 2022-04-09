@@ -25,6 +25,7 @@
         }
     </style>
 </head>
+<body onload="custom()">
 <ion-app>
     
         
@@ -52,13 +53,16 @@
             <ion-col size="4.5">
                 <ion-list>
                     <ion-item>
-                        <p>@spirit</p>
+                        <p id="ing1">ingredient 1</p>
                     </ion-item>
                     <ion-item>
-                        <p>@mixer</p>
+                        <p id="ing2">ingredient 2</p>
                     </ion-item>
                     <ion-item>
-                        <p>@ice</p>
+                        <p id="ing3">ingredient 3</p>
+                    </ion-item>
+                    <ion-item>
+                        <p id="ice">ice</p>
                     </ion-item>
                 </ion-list>
             </ion-col>
@@ -72,13 +76,12 @@
            
                     <ion-select placeholder="Select Spirit..." id="select-spirit" style="color:white; font-size: 20px;">
 
-                        <!--This is where the app will refer to the API to collect the list of spirits -->
                         <ion-select-option>Gin</ion-select-option>
                     </ion-select>
                 
         </ion-card>
 
-
+        <ion-radio-group>
     <ion-row>
         <ion-col size="6">
             <ion-item >
@@ -86,7 +89,9 @@
         
                         <ion-label style="color:white">25ml</ion-label>
                 </ion-card>
+                
                         <ion-radio id="25ml-bttn" color="success" style="position:relative;right:40px" slot="end" value="25"></ion-radio>
+                
             </ion-item>
         </ion-col>
         <ion-col size="6">
@@ -100,7 +105,7 @@
             </ion-item>
         </ion-col>
     </ion-row>
-    
+</ion-radio-group>
     <ion-card style="background-color:#62626D;padding:10px">
            
         <ion-select placeholder="Second Spirit..." id="select-spirit-2" style="color:white; font-size: 20px;">
@@ -109,7 +114,7 @@
     
     </ion-card>
 
-
+<ion-radio-group>
     <ion-row>
         <ion-col size="6">
             <ion-item >
@@ -131,31 +136,28 @@
             </ion-item>
         </ion-col>
     </ion-row>
-
+</ion-radio-group>
 
 
         <ion-card style="background-color:#62626D;padding:10px">
            
             <ion-select placeholder="Select Mixer..." id="select-mixer" style="color:white; font-size: 20px;">
-                <!--This is where the app will refer to the API to collect the list of mixers -->
+                
                 <ion-select-option>Coca Cola</ion-select-option>
             </ion-select>
         
         </ion-card>
 
-        <ion-card style="background-color:#62626D;padding:10px">
-           
-            <ion-select placeholder="Second Mixer..." id="select-mixer-2" style="color:white; font-size: 20px;">
-                <ion-select-option>Coca Cola</ion-select-option>
-            </ion-select>
-        
-        </ion-card>
 
         <ion-card style="background-color:#62626D;padding:10px">
            
             <ion-select placeholder="Select Ice..." id="select-ice" style="color:white; font-size: 20px;">
-                <ion-select-option>Crushed</ion-select-option>
+                <ion-select-option value="Crushed">Crushed</ion-select-option>
+                <ion-select-option value="Cubed">Cubed</ion-select-option>
             </ion-select>
         
         </ion-card>
     </ion-content>
+    <script src="app.js"></script>
+</ion-app>
+</body>

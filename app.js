@@ -1,32 +1,252 @@
+
+const dateTime = document.querySelector('#date-time');
+const dateOutput = document.querySelector('#inputDate');
+const verButton = document.getElementById('verify');
+const nav = document.querySelector('ion-nav')
+
+
 const offbutton = document.getElementById('off-bttn');
-const searchbutton = document.getElementById('search-bttn');
+
 const beerpage = document.getElementById('beer-bttn');
 const backHome = document.getElementById('back-home');
 
+const searchBar = document.querySelector('#searchBar')
 
-searchbutton.addEventListener('click',showSearch)
+const searchGo = document.getElementById('search');
 
-// const url = "www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007";
+const drinksList = document.querySelector('#nameResults');
 
-// fetch(url).then(getData);
-
-// async function getData(aResponse){
-//     const data = await aResponse.json();
-//     console.log(data);
-//     return data;
-// }
+const customImage = document.getElementById('drink-img');
 
 
+if(searchGo){
+    searchGo.addEventListener('click',getSearchTerm);
+};
+
+let url = "";
+
+customElements.define('edit-drink', class  extends HTMLElement{
+    connectedCallback(){
+        
+        this.innerHTML = `
+        <style>
+    ion-list{
+        position:relative;
+        top:10px;
+        
+    }
+    ion-item{
+        color:white;
+        --border-color:white
+    }
+</style>
+<ion-app>
+        <ion-content style="--ion-background-color:#35353D">
+
+        <ion-row style="height:87px">
+            <ion-col size="2">
+             <ion-tab-button id="back-home" href="./cocktails.html">
+                 <ion-icon name="arrow-back-outline" size="large" color="success" style="padding-top:10px;font-size:60px"></ion-icon>
+             </ion-tab-button>
+             
+                 
+                    
+            </ion-col>
+            <ion-col >
+            <ion-label id="label-name" style="position:relative;left:40px;top:20px;font-size:30px;color:white">${this.selectedDrink.strDrink}</ion-label>
+            </ion-col>
+        </ion-row> 
+
+        
+
+        <ion-row >
+            <ion-col size="4.5">
+                <ion-list >
+                    <ion-item id="ing1">
+                        <p>${this.selectedDrink.strIngredient1}</p>
+                    </ion-item>
+                    <ion-item id="ing2">
+                        <p>${this.selectedDrink.strIngredient2}</p>
+                    </ion-item>
+                    <ion-item id="ing3"
+                        <p>${this.selectedDrink.strIngredient3}</p>
+                    </ion-item>
+                    <ion-item id="ice">
+                        <p>None</p>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+            <ion-col>
+                <ion-img id="drink-img" src="${this.selectedDrink.strDrinkThumb}" ></ion-img>
+            </ion-col>
+            
+        </ion-row>
+
+        <ion-card style="background-color:#62626D;padding:10px">
+           
+                <ion-select id="select-spirit" placeholder="Select Spirit..." style="color:white; font-size: 20px;">
+                    <ion-select-option>Gin</ion-select-option>
+                    <ion-select-option>Vodka</ion-select-option>
+                </ion-select>
+                
+        </ion-card>
+
+
+    <ion-row>
+        <ion-col size="6">
+            <ion-item >
+                <ion-card style="background-color:#62626D;padding:15px">
+        
+                        <ion-label style="color:white">25ml</ion-label>
+                </ion-card>
+                        <ion-radio id="25ml-bttn" color="success" style="position:relative;right:40px" slot="end" value="25"></ion-radio>
+            </ion-item>
+        </ion-col>
+        <ion-col size="6">
+            <ion-item>
+            <ion-card style="background-color:#62626D;padding:15px">
+        
+                <ion-label style="color:white">50ml</ion-label>
+        </ion-card>
+                <ion-radio id="50ml-bttn" color="success" style="position:relative;right:40px" slot="end" value="50"></ion-radio>
+                
+            </ion-item>
+        </ion-col>
+    </ion-row>
+        <ion-card style="background-color:#62626D;padding:10px">
+       
+        <ion-select placeholder="Second Spirit..." id="select-spirit-2" style="color:white; font-size: 20px;">
+            <ion-select-option>Gin</ion-select-option>
+        </ion-select>
+
+        </ion-card>
+    
+        <ion-card style="background-color:#62626D;padding:10px">
+           
+            <ion-select placeholder="Select Mixer..." id="select-mixer" style="color:white; font-size: 20px;">
+                <ion-select-option>Coca Cola</ion-select-option>
+            </ion-select>
+        
+        </ion-card>
+        <ion-card style="background-color:#62626D;padding:10px">
+           
+            <ion-select placeholder="Select Ice..." id="select-ice" style="color:white; font-size: 20px;">
+                <ion-select-option>Crushed</ion-select-option>
+                <ion-select-option>Cubed</ion-select-option>
+                <ion-select-option>None</ion-select-option>
+            </ion-select>
+        
+        </ion-card>
+        <ion-button size="large" color="success" style="display:block;margin-left:20px;margin-right:20px">Pour</ion-button>
+    </ion-content>
+    </ion-app>
+    
+    `}
+    
+    })
+    if(dateTime){
+    dateTime.addEventListener('ionChange', changeDate);
+}
+    function changeDate(){
+           
+        let date = new Date(dateTime.value )
+        
+        var newDate =date.toString().substring(0,16)   
+        dateOutput.textContent = newDate;
+        verButton.addEventListener('click',checkDate)
+        return date;
+    }
+    
+    
+    function checkDate(date){
+        var today = new Date();
+        var validDate = new Date(
+            today.getFullYear() -18,
+            today.getMonth(),
+            today.getDate()
+           
+    
+        );
+        date = changeDate(date)
+        let numValid = new Date(validDate).getTime();
+        let numDate = new Date(date).getTime();
+        
+        console.log(numValid)
+        console.log(date)
+        if(numDate <numValid){
+            console.log("yes")
+            window.location.href="./home.html"
+        }
+        else{
+            console.log("no")
+            handleAlert();
+            
+        }
+        
+    }
+    async function handleAlert(){
+        const alert = await alertController.create({
+            header: 'Sorry!',
+              message: 'You are not old enough to enter',
+              buttons: ['Okay'],
+        });
+        await alert.present();
+    }
+    
 var op= 1;
 var intervalID = 0;
 
-offbutton.addEventListener('click',fadeOut);
+if(offbutton){
+    offbutton.addEventListener('click',fadeOut);
+};
 
+function clearList(){
+    while(drinksList.lastElementChild){
+    drinksList.removeChild(drinksList.lastElementChild)}
+}
 
+function getSearchTerm(){
+    
+    let cocktailName = searchBar.value
+    console.log(searchBar.value);
+    findResult(cocktailName);
+    return cocktailName;
+    
+}
 
+function findResult(cocktailName){
+    clearList();
+    url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName}`
+    console.log(url);
+    
+    
+    fetch(url).then(function(response){
+        return response.json();
 
-
-
+    }).then(function(response){
+        var data = response;
+        console.log(data);
+        return data.drinks.map(function(drink){
+            var drinkName = document.createElement('ion-item');
+            
+            
+            drinkName.innerHTML = drink.strDrink;
+            
+            
+            drinksList.appendChild(drinkName)
+            drinkName.onclick = function(){
+                var nameOfDrink = drinkName.textContent;
+                console.log(drinkName.textContent)
+                showDetail(nameOfDrink);
+                return nameOfDrink
+            };
+           
+            console.log(cocktailName)
+            return drinkName,response,cocktailName;
+        })
+})
+    
+}
 
 function fadeOut(){
     setInterval(hide,200);
@@ -36,171 +256,131 @@ function hide(){
     
     if(op >= 0){
         op = op - 0.3;
-        document.getElementById('body').style.opacity = op ;        
+        document.querySelector('body').style.opacity = op ;        
     }
 
     else{
         clearInterval(intervalID);
     }
 }
-
-
-
-
-
-const nav = document.querySelector('ion-nav')
-function showDetail(){
-    nav.push('edit-drink')
-    customElements.define('edit-drink', class NavDetail extends HTMLElement{
-        connectedCallback(){
-            this.innerHTML = `
-            <style>
-        ion-list{
-            position:relative;
-            top:50px;
-            
-        }
-        ion-item{
-            color:white;
-            --border-color:white
-        }
-    </style>
-            <ion-content style="--ion-background-color:#35353D">
+function updateData(spirit){
     
-            <ion-row style="height:75px">
-                <ion-col size="3">
-                <ion-tab-button id="back-home" href="./cocktails.html">
-                    <ion-icon name="arrow-back-outline" size="large" color="success" style="padding-top:10px;font-size:60px"></ion-icon>
-                </ion-tab-button>
-            
-                     
-                        
-                </ion-col>
-                <ion-label  style="position:relative;left:40px;top:20px;font-size:30px;color:white">Vodka Coke</ion-label>
-            </ion-row> 
-            
-    
-            <ion-row >
-                <ion-col size="4.5">
-                    <ion-list >
-                        <ion-item>
-                            <p>@spirit</p>
-                        </ion-item>
-                        <ion-item>
-                            <p>@mixer</p>
-                        </ion-item>
-                        <ion-item>
-                            <p>@ice</p>
-                        </ion-item>
-                    </ion-list>
-                </ion-col>
-                <ion-col>
-                    <ion-img id="drink-img" src="images/rumncoke.png"></ion-img>
-                </ion-col>
-                
-            </ion-row>
-    
-            <ion-card style="background-color:#62626D;padding:10px">
-               
-                        <ion-select placeholder="Select Spirit..." id="select-spirit" style="color:white; font-size: 20px;">
-                            <ion-select-option>Gin</ion-select-option>
-                        </ion-select>
-                    
-            </ion-card>
-    
-    
-        <ion-row>
-            <ion-col size="6">
-                <ion-item >
-                    <ion-card style="background-color:#62626D;padding:15px">
-            
-                            <ion-label style="color:white">25ml</ion-label>
-                    </ion-card>
-                            <ion-radio id="25ml-bttn" color="success" style="position:relative;right:40px" slot="end" value="25"></ion-radio>
-                </ion-item>
-            </ion-col>
-            <ion-col size="6">
-                <ion-item>
-                <ion-card style="background-color:#62626D;padding:15px">
-            
-                    <ion-label style="color:white">50ml</ion-label>
-            </ion-card>
-                    <ion-radio id="50ml-bttn" color="success" style="position:relative;right:40px" slot="end" value="50"></ion-radio>
-                    
-                </ion-item>
-            </ion-col>
-        </ion-row>
+    const ingredient1 = document.querySelector('#ing1');
+    ingredient1.textContent = spirit.detail.value;
+
+        if ( document.URL.includes("cocktails.html") || document.URL.includes("searchresults.html")) {
+             }
+        else{        
+        customImage.src = "./images/emp1.png";
+        };
+}
+function updateMixer(mixer){
+    const ingredient2 = document.querySelector('#ing3');
+    ingredient2.textContent = mixer.detail.value;
+
+    if(document.URL.includes("cocktails.html") || document.URL.includes("searchresults.html")){
+        return
+    }
+    else{
+        customImage.src = "./images/emp3.png";
+    }
+}
+function updateIce(ice){
+    console.log(ice.detail.value)
+    let iceSelect = document.querySelector('#ice');
+    iceSelect.textContent = ice.detail.value;
+
+    console.log(ice.detail.value)
+
+    if(document.URL.includes("cocktails.html")|| document.URL.includes("searchresults.html")){
+        return
+    }
+    else{
         
-            <ion-card style="background-color:#62626D;padding:10px">
-               
-                <ion-select placeholder="Select Mixer..." id="select-mixer" style="color:white; font-size: 20px;">
-                    <ion-select-option>Coca Cola</ion-select-option>
-                </ion-select>
+        
+        if (ice.detail.value === "Cubed"){
+            console.log(ice.detail.value)
+            customImage.src = "./images/cube.png";
+        }
+        else if(ice.detail.value === "Crushed") {
             
-            </ion-card>
-            <ion-card style="background-color:#62626D;padding:10px">
-               
-                <ion-select placeholder="Select Ice..." id="select-ice" style="color:white; font-size: 20px;">
-                    <ion-select-option>Crushed</ion-select-option>
-                </ion-select>
+            customImage.src = "./images/crush.png";
+    
+        }
+        else if(ice.detail.value === null){
+            customImage.src="./images/empty.png";
+        }
+    }
+    
+}
+
+function updateSpirit2(spirit2){
+    const ingredient3 = document.querySelector('#ing2');
+    ingredient3.textContent = spirit2.detail.value;
+    if(document.URL.includes("cocktails.html")|| document.URL.includes("searchresults.html")){
+        return
+    }
+    else{
+    customImage.src = "./images/emp2.png";}
+}
+
+function custom(){
+    const spirit = document.querySelector('#select-spirit');
+    const mixer = document.querySelector('#select-mixer');
+    const spirit2 = document.querySelector('#select-spirit-2');
+    const ice = document.querySelector('#select-ice');
+        
+        spirit.addEventListener('ionChange',updateData);
+        
+        
+        mixer.addEventListener('ionChange',updateMixer);
+        
+        
+        ice.addEventListener('ionChange',updateIce);
+        
+
+        if(spirit2){
+            spirit2.addEventListener('ionChange', updateSpirit2);
+        }
+    const link = "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
+    
+    fetch(link).then(function(response){
+        return response.json();
+    }).then(function(response){
+        var ings = response;
+        console.log(ings);
+        return ings.drinks.map(function(ings){
+            var newItem = document.createElement('ion-select-option');
+            newItem.innerHTML = ings.strIngredient1;
+
+            spirit.appendChild(newItem);
+            var newItem2 = newItem.cloneNode(true);
+            mixer.appendChild(newItem2);
+            var newItem3 = newItem2.cloneNode(true);
+            spirit2.appendChild(newItem3)
             
-            </ion-card>
-        </ion-content>`}
+            return newItem,response;
+        })
     })
 }
-
-function showSearch(){
-    nav.push('search-page')
     
-    customElements.define('search-page', class extends HTMLElement{
-        connectedCallback(){
-            this.innerHTML = `
-            <style>
-        ion-item{
-            color:white;
-            --border-color:rgb(196, 196, 196);
-        }
-    </style>
-            <ion-header position="static" style="background-color: #62626D; height:80px">
-            
-            <ion-row>
-                <ion-col size="2">
-                    <ion-tab-button id="back-home" href="./home.html">
-                        <ion-icon name="arrow-back-outline" color="success" style="font-size:40px"></ion-icon>
-                    </ion-tab-button>
-                </ion-col>
-                <ion-col size="9">
-                    <ion-searchbar></ion-searchbar>
-                </ion-col>
-                    
-                    
-               
-            </ion-row>
-            
-        </ion-header>
-        <ion-content style="--ion-background-color:#35353D">
 
-            <ion-list display="block">
-                <ion-item>
-                    
 
-                </ion-item>
-                <ion-item>
-                    
-                </ion-item>
-                <ion-item>
-                    
-                </ion-item>
-                <ion-item>
-                    
-                </ion-item>
-                <ion-item>
-                    
-                </ion-item>
-            </ion-list>
+
+function showDetail(nameOfDrink){
+    
+    const api = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${nameOfDrink}`
+    
+    
+    fetch(api).then(function(response){
+        return response.json();
+
+    }).then(function (response){
         
-        </ion-content>`
-
-}
-    }
-    )};
+            var selectedDrink = response.drinks[0];
+            console.log(selectedDrink);
+            nav.push('edit-drink',{selectedDrink});
+            
+    }).then(custom)
+   
+    };
