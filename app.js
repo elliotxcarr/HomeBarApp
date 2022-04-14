@@ -17,7 +17,16 @@ const searchGo = document.getElementById('search');
 const drinksList = document.querySelector('#nameResults');
 
 const customImage = document.getElementById('drink-img');
+const saveBttn = document.getElementById('save-drink');
+const nameInput = document.querySelector('#name-in');
 
+const faveList = document.querySelector('#favList');
+
+let faveDrinks = new Array();
+
+if(saveBttn){
+    saveBttn.addEventListener('click', saveDrink)
+}
 
 if(searchGo){
     searchGo.addEventListener('click',getSearchTerm);
@@ -91,15 +100,18 @@ customElements.define('edit-drink', class  extends HTMLElement{
                 
         </ion-card>
 
-
+    <ion-radio-group>
     <ion-row>
         <ion-col size="6">
+        
             <ion-item >
                 <ion-card style="background-color:#62626D;padding:15px">
         
                         <ion-label style="color:white">25ml</ion-label>
                 </ion-card>
+                   
                         <ion-radio id="25ml-bttn" color="success" style="position:relative;right:40px" slot="end" value="25"></ion-radio>
+                    
             </ion-item>
         </ion-col>
         <ion-col size="6">
@@ -111,8 +123,10 @@ customElements.define('edit-drink', class  extends HTMLElement{
                 <ion-radio id="50ml-bttn" color="success" style="position:relative;right:40px" slot="end" value="50"></ion-radio>
                 
             </ion-item>
+            
         </ion-col>
     </ion-row>
+    <ion-radio-group>
         <ion-card style="background-color:#62626D;padding:10px">
        
         <ion-select placeholder="Second Spirit..." id="select-spirit-2" style="color:white; font-size: 20px;">
@@ -267,29 +281,34 @@ function updateData(spirit){
     
     const ingredient1 = document.querySelector('#ing1');
     ingredient1.textContent = spirit.detail.value;
+    let FirstIng = ingredient1.textContent;
 
         if ( document.URL.includes("cocktails.html") || document.URL.includes("searchresults.html")) {
              }
         else{        
         customImage.src = "./images/emp1.png";
         };
+        return FirstIng;
 }
 function updateMixer(mixer){
     const ingredient2 = document.querySelector('#ing3');
     ingredient2.textContent = mixer.detail.value;
-
+     
+    let Mixer = ingredient2.textContent;
     if(document.URL.includes("cocktails.html") || document.URL.includes("searchresults.html")){
         return
     }
     else{
         customImage.src = "./images/emp3.png";
     }
+    return Mixer,ingredient2;
 }
 function updateIce(ice){
     console.log(ice.detail.value)
     let iceSelect = document.querySelector('#ice');
     iceSelect.textContent = ice.detail.value;
 
+    let IceOption = iceSelect.textContent;
     console.log(ice.detail.value)
 
     if(document.URL.includes("cocktails.html")|| document.URL.includes("searchresults.html")){
@@ -311,17 +330,20 @@ function updateIce(ice){
             customImage.src="./images/empty.png";
         }
     }
-    
+    return IceOption;
 }
 
 function updateSpirit2(spirit2){
     const ingredient3 = document.querySelector('#ing2');
     ingredient3.textContent = spirit2.detail.value;
+
+    let SecondIng = ingredient3.textContent;
     if(document.URL.includes("cocktails.html")|| document.URL.includes("searchresults.html")){
         return
     }
     else{
     customImage.src = "./images/emp2.png";}
+    return SecondIng, ingredient3;
 }
 
 function custom(){
@@ -384,3 +406,45 @@ function showDetail(nameOfDrink){
     }).then(custom)
    
     };
+
+
+function saveDrink(){
+    
+    if (nameInput.value != ""){
+        
+        if(localStorage.getItem('favDr') === null ){
+            localStorage.setItem('favDr', JSON.stringify(faveDrinks))
+        }
+        let spirit1 = document.querySelector('#ing1');
+        let spirit2 = document.querySelector('#ing2');
+        let mixer = document.querySelector('#ing3');
+        let ice = document.querySelector('#ice');
+        
+        let newDrink = {name: nameInput.value, spirit1: spirit1.textContent, spirit2: spirit2.textContent, Mixer: mixer.textContent, Ice: ice.textContent}
+        
+        faveDrinks =  JSON.parse(localStorage.getItem('favDr'));
+        faveDrinks.push(newDrink);
+        localStorage.setItem('favDr', JSON.stringify(faveDrinks))
+        console.log(faveDrinks)
+       
+
+    }
+    else{
+        return;
+    }
+    
+    
+}
+
+function showFaves(){
+    faveDrinks =  JSON.parse(localStorage.getItem('favDr'));
+    console.log(faveDrinks)
+    faveDrinks.map(function(item){
+        newListItem = document.createElement('ion-item');
+        newListItem.innerHTML = item.name;
+        faveList.appendChild(newListItem);
+
+    })
+    
+        
+    }
